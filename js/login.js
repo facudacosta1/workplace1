@@ -6,6 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     loginButton.addEventListener('click', function(event) {
         if (userInput.value.length === 0 || passwordInput.value.length === 0) {
             event.preventDefault(); // Detener la redirección si los campos no están llenos
+        } else {
+            localStorage.setItem('user', userInput.value);
+            localStorage.setItem('password', passwordInput.value);
         }
     });
 
