@@ -23,3 +23,4 @@ document.addEventListener('DOMContentLoaded', function() {
     userInput.addEventListener('input', actualizarEstilos);
     passwordInput.addEventListener('input', actualizarEstilos);
 });
+
