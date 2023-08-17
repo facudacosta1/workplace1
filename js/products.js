@@ -11,18 +11,18 @@ fetch(DATA_AUTOS)
     })
     .then((data) => {
         const products = data.products;
-        let content = '<h1 class="product-cat">Autos</h1>';
+        let content = '<h1 class="product-cat">AUTOS</h1>';
 
         products.forEach((product) => {
             content += `
             <div>
-            <hr>
+            <div class="container-products">
             <div class="product-div-img">
                 <img src="${product.image}" alt="${product.name}" class="product-img">
-            
+            </div>
                 <h2 class="product-name">${product.name}</h2>
                 <p class="product-descr">${product.description}</p>
-                <p class="product-price">Precio: $${product.price}</p>
+                <p class="product-price">Precio: USD$ ${product.cost}</p>
             </div>
             </div>`;
         });
