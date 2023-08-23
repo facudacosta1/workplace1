@@ -1,8 +1,13 @@
-const DATA_AUTOS = 'https://japceibal.github.io/emercado-api/cats_products/101.json';
+const catID = localStorage.getItem('catID');
+const BASE_URL= 'https://japceibal.github.io/emercado-api/cats_products/';
+
+const DATA = BASE_URL + catID + '.json';
+
+//selecciono el localstorage, creo una BASE_URL y a DATA_AUTOS le concateno catID y ".json"
 
 const mostrarResultados = document.getElementById("products");
 
-fetch(DATA_AUTOS)
+fetch(DATA)
     .then((response) => {
         if (!response.ok) {
             throw new Error('Error al cargar.');
@@ -11,7 +16,7 @@ fetch(DATA_AUTOS)
     })
     .then((data) => {
         const products = data.products;
-        let content = '<h1 class="product-cat">AUTOS</h1>';
+        let content = '<h1 class="product-cat"></h1>';
 
         products.forEach((product) => {
             content += `
