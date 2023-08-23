@@ -18,4 +18,8 @@ document.addEventListener("DOMContentLoaded", function(){
     if (!storedUser || !storedPassword){
         window.location = 'login.html'
     }
+
+    let nameUser = document.getElementById('nameUser');
+    nameUser.innerText = `${storedUser}`;
+    
 });
