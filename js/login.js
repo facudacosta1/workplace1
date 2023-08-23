@@ -25,8 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
     userInput.addEventListener('input', actualizarEstilos);
     passwordInput.addEventListener('input', actualizarEstilos);
 
-    
-
     function inicioSesion(){
         if (userInput.value.length > 0 && passwordInput.value.length>0){
             localStorage.setItem('user', userInput.value);
