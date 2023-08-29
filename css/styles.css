@@ -189,6 +189,60 @@ a.custom-card:hover {
   color: orange;
 }
 
+.product-cat{
+  font-size: 2em;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  padding: 0;
+  margin-top: 40px;
+  text-align: left;
+}
+
+.products-body{
+  background-image: url('/img/fondo-login.PNG');
+}
+
+.product-descr, .product-price, .product-name{
+  margin-bottom: 0;
+  color: aliceblue;
+  padding: 10px 40px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.product-name, .product-cat{
+  font-weight: 1000;
+}
+
+.product-div-img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-img{
+  max-width: 50%;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.product-img:hover{
+  transform: scale(1.03);
+}
+
+.container-products{
+  background-color: rgba(0, 0, 0, 0.396);
+  margin-top: 10px;
+}
+
+.product-cat{
+  font-family: 'Montserrat', sans-serif;
+  color:orange;
+  font-weight: 550;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 
 
