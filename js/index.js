@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     let nameUser = document.getElementById('nameUser');
-
     nameUser.innerText = storedUser;
     
 });

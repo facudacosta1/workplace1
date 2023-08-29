@@ -1,11 +1,10 @@
 const catID = localStorage.getItem('catID');
 const BASE_URL= 'https://japceibal.github.io/emercado-api/cats_products/';
-
 const DATA = BASE_URL + catID + '.json';
 
 //selecciono el localstorage, creo una BASE_URL y a DATA_AUTOS le concateno catID y ".json"
 
-const mostrarResultados = document.getElementById("products");
+const mostrarResultados = document.getElementById("products");          
 
 fetch(DATA)
     .then((response) => {
@@ -38,4 +37,6 @@ fetch(DATA)
         console.error(error);
     });
 
-    
+document.addEventListener('DOMContentLoaded', function(){
+    document.getElementsByClassName('cat-title').innerText = 'qweqe';
+})
