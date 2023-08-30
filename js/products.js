@@ -2,12 +2,10 @@ const catID = localStorage.getItem('catID');
 const BASE_URL= 'https://japceibal.github.io/emercado-api/cats_products/';
 const DATA = BASE_URL + catID + '.json';
 
-//selecciono el localstorage, creo una BASE_URL y a DATA_AUTOS le concateno catID y ".json"
-
+// CARGA DE ITEMS
 document.addEventListener('DOMContentLoaded', function(){
   const mostrarResultados = document.getElementById("products");   
   const parrafo = document.getElementById('parrafo');
-
   fetch(DATA)
       .then((response) => {
           if (!response.ok) {
@@ -40,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function(){
           console.error(error);
       });
 })
+
+// FUNCION FILTRAR ASOCIADA AL BOTON FILTRAR
 
 function filtrar (){
     let min = document.getElementById('rangeFilterCountMin').value;
@@ -83,7 +83,10 @@ function filtrar (){
       })
 }
 
+//FUNCION LIMPIAR ASOCIADA AL BOTON LIMPIAR
+
 function limpiar(){
     window.location = 'products.html';
     return;
 }
+
