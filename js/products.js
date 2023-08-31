@@ -136,3 +136,16 @@ function sortProducts(ascending) {
             return nameB.localeCompare(nameA);
         }
     });
+
+    products.forEach(function(product) {
+        productContainer.appendChild(product);
+    });
+}
+
+document.getElementById('sortAsc').addEventListener('click', function() {
+    sortProducts(true);
+});
+
+document.getElementById('sortDesc').addEventListener('click', function() {
+    sortProducts(false);
+});
