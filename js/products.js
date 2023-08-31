@@ -1,7 +1,7 @@
 // Variables globales
 const BASE_URL = 'https://japceibal.github.io/emercado-api/cats_products/';
 
-// Verificar el inicio de sesión
+// Verificar el inicio de sesión (similar a lo del index.html)
 function verificarSesion() {
     const storedUser = localStorage.getItem('user');
     const storedPassword = localStorage.getItem('password');
@@ -13,7 +13,10 @@ function verificarSesion() {
 // Obtener el catID de localStorage
 const catID = localStorage.getItem('catID');
 
-// Obtener y mostrar datos
+
+// FUNCION PARA OBTENER JSON Y MOSTRAR DATOS 
+
+
 function obtenerYMostrarDatos() {
     const url = BASE_URL + catID + '.json';
     fetch(url)
@@ -25,7 +28,10 @@ function obtenerYMostrarDatos() {
         .catch(error => console.error('Error:', error));
 }
 
-// Mostrar productos
+
+// FUNCION PARA FILTRAR Y MOSTRAR PRODUCTOS FILTRADOS POR COSTO
+
+
 function mostrarProductos(products) {
     const minCostInput = document.getElementById('rangeFilterCountMin');
     const maxCostInput = document.getElementById('rangeFilterCountMax');
@@ -63,6 +69,10 @@ function mostrarProductos(products) {
     }
 }
 
+
+// FUNCION PARA FILTRAR BUSQUEDA
+
+
 function filtrarPorBusqueda(products, searchTerm) {
     searchTerm = searchTerm.toLowerCase();
     return products.filter(product => {
@@ -70,16 +80,22 @@ function filtrarPorBusqueda(products, searchTerm) {
     });
 }
 
-// Agregar evento de búsqueda al formulario
+
+// EVENTO PARA LA BUSQUEDA A PARTIR DEL INPUT (DENTRO DE FORM)
+
+
 const searchForm = document.getElementById('search-form');
 
 searchForm.addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevenir el envío del formulario por defecto
+    e.preventDefault(); 
     const searchTerm = document.getElementById('search-input').value;
     buscarYMostrarResultados(searchTerm);
 });
 
-// Función para buscar y mostrar resultados
+
+// FUNCION PARA OBTENER DATOS DEL JSON YA FILTRADOS POR BUSQUEDA
+
+
 function buscarYMostrarResultados(searchTerm) {
     fetch(BASE_URL + catID + '.json')
         .then(res => res.json())
@@ -91,7 +107,7 @@ function buscarYMostrarResultados(searchTerm) {
         .catch(error => console.error('Error:', error));
 }
 
-// Event listeners
+// EVENTOS DE LA PAGINA 
 document.addEventListener('DOMContentLoaded', verificarSesion);
 document.getElementById('filterBtn').addEventListener('click', obtenerYMostrarDatos);
 document.getElementById('clearBtn').addEventListener('click', function () {
@@ -100,8 +116,7 @@ document.getElementById('clearBtn').addEventListener('click', function () {
     obtenerYMostrarDatos();
 });
 
-// Llamada inicial
-obtenerYMostrarDatos();
+// LLAMADO INICIAL PARA MOSTRAR TODOS LOS PRODUCTOS
 
-// FUNCION: para buscador interno
+obtenerYMostrarDatos();
 
