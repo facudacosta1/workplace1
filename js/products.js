@@ -120,3 +120,19 @@ document.getElementById('clearBtn').addEventListener('click', function () {
 
 obtenerYMostrarDatos();
 
+//Funcion para ordenar productos en orden alfabetico (A-Z) (Z-A)
+
+function sortProducts(ascending) {
+    const productContainer = document.getElementById('productContainer');
+    const products = Array.from(productContainer.getElementsByClassName('container'));
+
+    products.sort(function(a, b) {
+        const nameA = a.querySelector('h2').textContent.trim().toUpperCase();
+        const nameB = b.querySelector('h2').textContent.trim().toUpperCase();
+
+        if (ascending) {
+            return nameA.localeCompare(nameB);
+        } else {
+            return nameB.localeCompare(nameA);
+        }
+    });
