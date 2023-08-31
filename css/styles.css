@@ -223,6 +223,20 @@ a.custom-card:hover {
   margin: 30px;
 }
 
+#search-input{
+  width: 500px;
+  border-radius: 5px;
+  background-color: white;
+  border: none;
+  padding: 8px;
+}
+
+#btnSearch{
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+}
+
 
 
 
