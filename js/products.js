@@ -55,8 +55,12 @@ function mostrarProductos(products) {
             </div>
         `;
     });
-    
-    document.getElementById('productContainer').innerHTML = content;
+    const productContainer = document.getElementById('productContainer');
+    if (productsFiltered.length > 0) {
+        productContainer.innerHTML = content;
+    } else {
+        productContainer.innerHTML = '<div class="no-results">No se encontraron resultados similares.</div>';
+    }
 }
 
 function filtrarPorBusqueda(products, searchTerm) {
@@ -68,6 +72,7 @@ function filtrarPorBusqueda(products, searchTerm) {
 
 // Agregar evento de búsqueda al formulario
 const searchForm = document.getElementById('search-form');
+
 searchForm.addEventListener('submit', function (e) {
     e.preventDefault(); // Prevenir el envío del formulario por defecto
     const searchTerm = document.getElementById('search-input').value;
