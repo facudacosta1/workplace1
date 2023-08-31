@@ -1,125 +1,102 @@
-document.addEventListener('DOMContentLoaded', function(){
-    var storedUser = localStorage.getItem('user');
-    var storedPassword = localStorage.getItem('password');
-
-    if (!storedUser || !storedPassword){
-        window.location = 'login.html';
-    }
-})
-
-const catID = localStorage.getItem('catID');
+// Variables globales
 const BASE_URL = 'https://japceibal.github.io/emercado-api/cats_products/';
 
-//FUNCION PARA OBTENER EL JSON
+// Verificar el inicio de sesión
+function verificarSesion() {
+    const storedUser = localStorage.getItem('user');
+    const storedPassword = localStorage.getItem('password');
+    if (!storedUser || !storedPassword) {
+        window.location = 'login.html';
+    }
+}
 
-function getJSON(callback){
+// Obtener el catID de localStorage
+const catID = localStorage.getItem('catID');
+
+// Obtener y mostrar datos
+function obtenerYMostrarDatos() {
     const url = BASE_URL + catID + '.json';
     fetch(url)
-        .then(res=>{
-            if(!res.ok){
-                throw new Error ('Error al obtener el JSON.')
-            }
-            return res.json();
+        .then(res => res.json())
+        .then(data => {
+            mostrarProductos(data.products);
+            document.getElementById('categoryName').textContent = 'Verás aquí todos los productos de la categoria '+ data.catName.toLowerCase();
         })
-        .then(data=>{
-            callback(data);
-        })
-        .catch(error=>{
-            console.error('Error: ', error);
-        })
+        .catch(error => console.error('Error:', error));
 }
 
-function showData(data){
-    const products = data.products;
-    let content = ``;
-    products.forEach((product)=>{
-        content += `
-            <div class="product">
-                <img class="product-img" src="${product.image}"> </img>
-                <div class="product-details">
-                    <h2 class="product-name">${product.name}</h2>
-                    <p class="product-description">${product.description}</p>
-                    <p class="product-cost">Precio: USD$ ${product.cost}</p>
-                </div>
-            </div>
-        `
-    })
-
-    document.getElementById('productContainer').innerHTML = content;
-    document.getElementById('categoryName').textContent += `${data.catName.toLowerCase()}`
-}
-
-getJSON(showData);
-
-// FUNCION PARA FILTRAR POR COSTO
-
-function filtrar(data, minCost, maxCost){
-    return data.products.filter(product =>{
-        const productCost = parseFloat(product.cost);
-
-        if(isNaN(productCost)){
-            return false;
-        } 
-
-        if(!isNaN(minCost) && !isNaN(maxCost)){
-            return productCost >= minCost && productCost <= maxCost;
-        } else if (!isNaN(minCost)){
-            return productCost >= minCost;
-        }else if(!isNaN(maxCost)){
-            return productCost <= maxCost;
-        }else {
-            return true;
-        }
-    });
-}
-
-// EVENTO AL BOTON FILTRAR
-
-document.getElementById('filterBtn').addEventListener('click', function(){
+// Mostrar productos
+function mostrarProductos(products) {
     const minCostInput = document.getElementById('rangeFilterCountMin');
     const maxCostInput = document.getElementById('rangeFilterCountMax');
-    const minCost = parseFloat(minCostInput.value); //toma valor del input y lo convierte a numero
+    const minCost = parseFloat(minCostInput.value);
     const maxCost = parseFloat(maxCostInput.value);
-
-    getJSON(function(data){
-        const productosFiltrados = filtrar(data, minCost, maxCost);
-        mostrarProductosFiltrados(productosFiltrados); //llama a la funcion y pasa los productos filtrados
+    
+    const productsFiltered = products.filter(product => {
+        const productCost = parseFloat(product.cost);
+        if (isNaN(productCost)) return false;
+        if (!isNaN(minCost) && !isNaN(maxCost)) return productCost >= minCost && productCost <= maxCost;
+        if (!isNaN(minCost)) return productCost >= minCost;
+        if (!isNaN(maxCost)) return productCost <= maxCost;
+        return true;
     });
-});
+    
+    let content = '';
 
-// FUNCION: para mostrar productos filtrados
-
-function mostrarProductosFiltrados(productos){
-    let content = ``;
-    productos.forEach((product)=>{
+    productsFiltered.forEach(product => {
         content += `
             <div class="product">
-                <img class="product-img" src="${product.image}"> </img>
+                <img class="product-img" src="${product.image}" alt="${product.name}">
                 <div class="product-details">
                     <h2 class="product-name">${product.name}</h2>
                     <p class="product-description">${product.description}</p>
                     <p class="product-cost">Precio: USD$ ${product.cost}</p>
                 </div>
             </div>
-        `
+        `;
     });
-
+    
     document.getElementById('productContainer').innerHTML = content;
 }
 
-// EVENTO: al boton limpiar
+function filtrarPorBusqueda(products, searchTerm) {
+    searchTerm = searchTerm.toLowerCase();
+    return products.filter(product => {
+        return product.name.toLowerCase().includes(searchTerm) || product.description.toLowerCase().includes(searchTerm);
+    });
+}
 
-document.getElementById('clearBtn').addEventListener('click', function(){
-    //limpia los valores de min y max y dispara filtrar automaticamente
+// Agregar evento de búsqueda al formulario
+const searchForm = document.getElementById('search-form');
+searchForm.addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevenir el envío del formulario por defecto
+    const searchTerm = document.getElementById('search-input').value;
+    buscarYMostrarResultados(searchTerm);
+});
+
+// Función para buscar y mostrar resultados
+function buscarYMostrarResultados(searchTerm) {
+    fetch(BASE_URL + catID + '.json')
+        .then(res => res.json())
+        .then(data => {
+            const products = data.products;
+            const filteredProducts = filtrarPorBusqueda(products, searchTerm);
+            mostrarProductos(filteredProducts);
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+// Event listeners
+document.addEventListener('DOMContentLoaded', verificarSesion);
+document.getElementById('filterBtn').addEventListener('click', obtenerYMostrarDatos);
+document.getElementById('clearBtn').addEventListener('click', function () {
     document.getElementById('rangeFilterCountMin').value = '';
     document.getElementById('rangeFilterCountMax').value = '';
+    obtenerYMostrarDatos();
+});
 
-    const filterBtn = document.getElementById('filterBtn');
+// Llamada inicial
+obtenerYMostrarDatos();
 
-    if(filterBtn){
-        filterBtn.click();
-    }
-
-})
-
+// FUNCION: para buscador interno
 
