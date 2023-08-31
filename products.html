@@ -42,8 +42,8 @@
 
   <main class="pb-5 container">
     <div class="text-center p-4"> 
-      <h2> <b>Productos </b></h2> 
-      <p class="lead" id="parrafo">Verás aquí todos los productos de la categoria </p>
+      <h2> <b>Productos</b></h2> 
+      <p class="lead" id="categoryName">Verás aquí todos los productos de la categoria </p>
     </div>
       
     <div class="col text-end">
@@ -64,22 +64,23 @@
             <p class="font-weight-normal text-end my-2">Cant.</p>
           </div>
           <div class="col">
-            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+            <input class="form-control" type="number" min="0" placeholder="min." id="rangeFilterCountMin">
           </div>
           <div class="col">
-            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+            <input class="form-control" type="number" min="0" placeholder="máx." id="rangeFilterCountMax">
           </div>
           <div class="col-3 p-0">
             <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="rangeFilterCount" onclick="filtrar()">Filtrar</button>
-              <button class="btn btn-link btn-sm" id="clearRangeFilter" onclick="limpiar()">Limpiar</button>
+              <button class="btn btn-light btn-block" id="filterBtn" >Filtrar</button>
+              <button class="btn btn-link btn-sm" id="clearBtn">Limpiar</button>
             </div>
           </div>
         </div>
       </div> 
-    <div id="products"> 
+    <div id="productContainer" class="container"> 
 
     </div>
+
   </main>
   <footer class="text-muted">
     <div class="container">

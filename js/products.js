@@ -1,92 +1,125 @@
-const catID = localStorage.getItem('catID');
-const BASE_URL= 'https://japceibal.github.io/emercado-api/cats_products/';
-const DATA = BASE_URL + catID + '.json';
-
-// CARGA DE ITEMS
 document.addEventListener('DOMContentLoaded', function(){
-  const mostrarResultados = document.getElementById("products");   
-  const parrafo = document.getElementById('parrafo');
-  fetch(DATA)
-      .then((response) => {
-          if (!response.ok) {
-              throw new Error('Error al cargar.');
-          }
-          return response.json();
-      })
-      .then((data) => {
-          const products = data.products;
-          let content = ``;  
-          products.forEach((product) => {
-              content += `
-              <div>
-              <div class="container-products">
-              <div class="product-div-img">
-                  <img src="${product.image}" alt="${product.name}" class="product-img">
-              </div>
-                  <h2 class="product-name">${product.name}</h2>
-                  <p class="product-descr">${product.description}</p>
-                  <p class="product-price">Precio: USD$ ${product.cost}</p>
-              </div>
-              </div>`;
-          });
-  
-          mostrarResultados.innerHTML = content;
-          parrafo.textContent += ` ${data.catName.toLowerCase()}`
+    var storedUser = localStorage.getItem('user');
+    var storedPassword = localStorage.getItem('password');
 
-      })
-      .catch((error) => {
-          console.error(error);
-      });
+    if (!storedUser || !storedPassword){
+        window.location = 'login.html';
+    }
 })
 
-// FUNCION FILTRAR ASOCIADA AL BOTON FILTRAR
+const catID = localStorage.getItem('catID');
+const BASE_URL = 'https://japceibal.github.io/emercado-api/cats_products/';
 
-function filtrar (){
-    let min = document.getElementById('rangeFilterCountMin').value;
-    let max = document.getElementById('rangeFilterCountMax').value;
-    const mostrarResultados = document.getElementById("products");   
+//FUNCION PARA OBTENER EL JSON
 
-    if(min == "" || max == ""){
-        alert('completa minimo y maximo.');
-        return;
-    }
-    
-    fetch(DATA)
-      .then((response) => {
-          if (!response.ok) {
-              throw new Error('Error al cargar.');
-          }
-          return response.json();
-      })
-      .then((data) => {
-          const products = data.products;
-          let content = ``;  
-          products.forEach((product) => {
-            if(product.cost > min && product.cost < max){
-                content += `
-              <div>
-              <div class="container-products">
-              <div class="product-div-img">
-                  <img src="${product.image}" alt="${product.name}" class="product-img">
-              </div>
-                  <h2 class="product-name">${product.name}</h2>
-                  <p class="product-descr">${product.description}</p>
-                  <p class="product-price">Precio: USD$ ${product.cost}</p>
-              </div>
-              </div>`;
-            } else {
-                content += ``
+function getJSON(callback){
+    const url = BASE_URL + catID + '.json';
+    fetch(url)
+        .then(res=>{
+            if(!res.ok){
+                throw new Error ('Error al obtener el JSON.')
             }
-          });
-  
-          mostrarResultados.innerHTML = content;
-      })
+            return res.json();
+        })
+        .then(data=>{
+            callback(data);
+        })
+        .catch(error=>{
+            console.error('Error: ', error);
+        })
 }
 
-//FUNCION LIMPIAR ASOCIADA AL BOTON LIMPIAR
+function showData(data){
+    const products = data.products;
+    let content = ``;
+    products.forEach((product)=>{
+        content += `
+            <div class="product">
+                <img class="product-img" src="${product.image}"> </img>
+                <div class="product-details">
+                    <h2 class="product-name">${product.name}</h2>
+                    <p class="product-description">${product.description}</p>
+                    <p class="product-cost">Precio: USD$ ${product.cost}</p>
+                </div>
+            </div>
+        `
+    })
 
-function limpiar(){
-    window.location = 'products.html';
-    return;
+    document.getElementById('productContainer').innerHTML = content;
+    document.getElementById('categoryName').textContent += `${data.catName.toLowerCase()}`
 }
+
+getJSON(showData);
+
+// FUNCION PARA FILTRAR POR COSTO
+
+function filtrar(data, minCost, maxCost){
+    return data.products.filter(product =>{
+        const productCost = parseFloat(product.cost);
+
+        if(isNaN(productCost)){
+            return false;
+        } 
+
+        if(!isNaN(minCost) && !isNaN(maxCost)){
+            return productCost >= minCost && productCost <= maxCost;
+        } else if (!isNaN(minCost)){
+            return productCost >= minCost;
+        }else if(!isNaN(maxCost)){
+            return productCost <= maxCost;
+        }else {
+            return true;
+        }
+    });
+}
+
+// EVENTO AL BOTON FILTRAR
+
+document.getElementById('filterBtn').addEventListener('click', function(){
+    const minCostInput = document.getElementById('rangeFilterCountMin');
+    const maxCostInput = document.getElementById('rangeFilterCountMax');
+    const minCost = parseFloat(minCostInput.value); //toma valor del input y lo convierte a numero
+    const maxCost = parseFloat(maxCostInput.value);
+
+    getJSON(function(data){
+        const productosFiltrados = filtrar(data, minCost, maxCost);
+        mostrarProductosFiltrados(productosFiltrados); //llama a la funcion y pasa los productos filtrados
+    });
+});
+
+// FUNCION: para mostrar productos filtrados
+
+function mostrarProductosFiltrados(productos){
+    let content = ``;
+    productos.forEach((product)=>{
+        content += `
+            <div class="product">
+                <img class="product-img" src="${product.image}"> </img>
+                <div class="product-details">
+                    <h2 class="product-name">${product.name}</h2>
+                    <p class="product-description">${product.description}</p>
+                    <p class="product-cost">Precio: USD$ ${product.cost}</p>
+                </div>
+            </div>
+        `
+    });
+
+    document.getElementById('productContainer').innerHTML = content;
+}
+
+// EVENTO: al boton limpiar
+
+document.getElementById('clearBtn').addEventListener('click', function(){
+    //limpia los valores de min y max y dispara filtrar automaticamente
+    document.getElementById('rangeFilterCountMin').value = '';
+    document.getElementById('rangeFilterCountMax').value = '';
+
+    const filterBtn = document.getElementById('filterBtn');
+
+    if(filterBtn){
+        filterBtn.click();
+    }
+
+})
+
 
