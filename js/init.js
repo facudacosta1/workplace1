@@ -39,3 +39,15 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+document.addEventListener("DOMContentLoaded", function(){
+  var storedUser = localStorage.getItem('user');
+  var storedPassword = localStorage.getItem('password');
+  
+  if (!storedUser || !storedPassword){
+      window.location = 'login.html'
+  }
+  
+  let nameUser = document.getElementById('nameUser');
+  nameUser.innerText = "Usuario: " + storedUser;
+  })

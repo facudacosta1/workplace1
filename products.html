@@ -44,7 +44,7 @@
   <main class="pb-5 container">
     <div class="text-center p-4"> 
       <h2> <b>Productos</b></h2> 
-      <p class="lead" id="categoryName"></p>
+      <p class="lead" id="categoryName"> Aquí verás todos los productos de la categoria</p>
       
       <div id="search-container">
         <form id="search-form" >
@@ -62,7 +62,10 @@
         <input type="radio" class="btn-check" name="options" id="sortDesc">
         <label class="btn btn-light" for="sortDesc">Z-A</label>
         <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-        <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1"></i></label>
+        <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1" id="sortByCount-i"></i></label>
+        <input type="radio" class="btn-check" name="options" id="sortByPrice" checked>
+        <label class="btn btn-light" for="sortByPrice">$<i class="fas fa-sort-amount-down mr-1" id="sortByPrice-i"></i></label>
+        
       </div>
     </div>
 
@@ -81,7 +84,7 @@
           <div class="col-3 p-0">
             <div class="btn-group" role="group">
               <button class="btn btn-light btn-block" id="filterBtn" >Filtrar</button>
-              <button class="btn btn-link btn-sm" id="clearBtn">Limpiar</button>
+              <button  id="clearBtn">Limpiar</button>
             </div>
           </div>
         </div>

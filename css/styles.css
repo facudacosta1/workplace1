@@ -237,6 +237,11 @@ a.custom-card:hover {
   border-radius: 5px;
 }
 
+#clearBtn, #filterBtn{
+  border: none;
+  background-color:rgba(0, 0, 0, 0);
+}
+
 
 
 
