@@ -33,7 +33,7 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item"> <!-- Se agrega elemento user al nav-->
             <a class="nav-link" href="my-profile.html" id="nameUser"></a>
           </li>
         </ul>
@@ -42,10 +42,13 @@
   </nav>
 
   <main class="pb-5 container">
+
+    <!--Se agrega h1 y p para cada categoría-->
     <div class="text-center p-4"> 
       <h2> <b>Productos</b></h2> 
       <p class="lead" id="categoryName"> Aquí verás todos los productos de la categoria</p>
       
+    <!--Se agrega caja para buscador en tiempo real-->
       <div id="search-container">
         <form id="search-form" >
           <input type="search" name="" id="search-input" name="query" placeholder="Buscar productos, marcas y más...">
@@ -54,7 +57,8 @@
       </div>
     
     </div>
-      
+    
+    <!--Se agrega inputs de orden: alfabetico, articulos vendidos, precio -->
     <div class="col text-end">
       <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
         <input type="radio" class="btn-check" name="options" id="sortAsc">
@@ -69,6 +73,7 @@
       </div>
     </div>
 
+    <!--Se agrega input para filtro rango de precios-->
     <div class="row">
       <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
         <div class="row container p-0 m-0">
@@ -89,6 +94,8 @@
           </div>
         </div>
       </div> 
+
+    <!--CONTENEDOR PARA MOSTRAR PRODUCTOS-->
     <div id="productContainer" class="container"> 
 
     </div>

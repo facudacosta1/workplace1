@@ -40,6 +40,9 @@ let getJSONData = function(url){
     });
 }
 
+//EVENTO AL DOM PARA CADA PAGINA: 
+  //Verifica si ingresaron user y password
+  //Agrega nombre de usuario en esquina superior derecha
 document.addEventListener("DOMContentLoaded", function(){
   var storedUser = localStorage.getItem('user');
   var storedPassword = localStorage.getItem('password');
