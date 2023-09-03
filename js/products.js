@@ -59,7 +59,7 @@ searchInput.addEventListener('input', function () {
         // Si no se ingresa un valor en el input muestra todos los elementos
     if (searchTerm === '') {
         displayProducts(jsonData.products);
-    } else { // Si se ingresa filtra elementos que coincidan con el término de búsqueda
+    } else { // Si se ingresa, filtra elementos que coincidan con el término de búsqueda
         const filteredProducts = jsonData.products.filter(product => { //filtra el objeto del JSON
                 //devuelve los elementos filtrados por nombre o descripción
             return product.name.toLowerCase().includes(searchTerm) || product.description.toLowerCase().includes(searchTerm);
