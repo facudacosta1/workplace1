@@ -242,12 +242,39 @@ a.custom-card:hover {
   background-color:rgba(0, 0, 0, 0);
 }
 
+#product-info-container{
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  margin-top: 50px;
+  padding: 50px;
+  border-radius: 10px;
+}
 
+.product-info-img{
+  width: 500px;
+  border-radius: 10px;
+}
 
+.product-info{
+  margin-left: 20px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 20px;
+ }
 
+#body-product-info{
+  background-color: rgba(237,237,237,255);
+}
 
+.product-name{
+  font-size: 1.5em;
+  font-weight:bold;
+}
 
-
+.product-cost{
+  font-size: 1em;
+  margin-top: 20px;
+}
 
 
 

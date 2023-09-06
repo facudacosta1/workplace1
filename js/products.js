@@ -1,6 +1,6 @@
 const BASE_URL = 'https://japceibal.github.io/emercado-api/cats_products/'; // base link JSON
 const catID = localStorage.getItem('catID'); //Obtiene catID del localStorage
-let jsonData; // Variable para almacenar los datos JSON
+let jsonData; 
 
 // Función para cargar los datos JSON y mostrarlos 
 async function loadAndDisplayData() {
@@ -26,13 +26,17 @@ async function loadAndDisplayData() {
     }
 }
 
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}
 
 // Función para mostrar los productos en el div productContainer
 function displayProducts(products) {
     let content = '';
     products.forEach(product => {
         content += `
-            <div class="product">
+            <div class="product" onclick="setProductID(${product.id})">
                 <img class="product-img" src="${product.image}" alt="${product.name}">
                 <div class="product-details">
                     <h2 class="product-name">${product.name}</h2>
