@@ -213,10 +213,12 @@ a.custom-card:hover {
   background-color: white;
   border-radius: 5px;
   transition: 300ms;
+  box-shadow: 1px 1px 2px grey;
 }
 
 .product:hover{
   transform: scale(1.03);
+  cursor: pointer;
 }
 
 .product-details{
@@ -241,34 +243,37 @@ a.custom-card:hover {
   border: none;
   background-color:rgba(0, 0, 0, 0);
 }
+/* Aquí comienzan los estilos de product-info.html */
 
 #product-info-container{
   background-color: rgb(255, 255, 255);
   display: flex;
   margin-top: 50px;
   padding: 50px;
+  box-shadow: 1px 1px 2px grey;
   border-radius: 10px;
 }
 
 .product-info-img{
-  width: 500px;
+  width: 550px;
   border-radius: 10px;
 }
 
 .product-info{
   margin-left: 20px;
-  border: 1px solid gray;
-  border-radius: 10px;
   padding: 20px;
+  border-left: 5px solid #000;
+  background-color: #f5f5f5;
  }
 
 #body-product-info{
-  background-color: rgba(237,237,237,255);
+  background-image: url('/img/fondo-login.PNG');
 }
 
 .product-name{
   font-size: 1.5em;
   font-weight:bold;
+  margin-top: 10px;
 }
 
 .product-cost{
@@ -276,5 +281,18 @@ a.custom-card:hover {
   margin-top: 20px;
 }
 
+#coments-container{
+  padding: auto auto;
+  border-radius: 10px;
+  padding: 20px; ;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 1px 1px 2px grey;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: bold;
+  margin-top: 5px;
+}
 
 
