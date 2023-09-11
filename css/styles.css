@@ -243,6 +243,15 @@ a.custom-card:hover {
   border: none;
   background-color:rgba(0, 0, 0, 0);
 }
+
+.btn.btn-light.btn-lg.btn-block {
+  background-color: #fff;
+  color: black;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.274) 1px 1px 2px;
+  margin: 0 auto;
+  width: 200px;
+}
 /* Aquí comienzan los estilos de product-info.html */
 
 /* Estilo para el contenedor principal de la información del producto */
@@ -266,6 +275,8 @@ a.custom-card:hover {
   margin-left: 20px;
   padding: 20px;
   border-left: 5px solid #000;
+  border-top-right-radius: 10px; 
+  border-bottom-right-radius: 10px; 
   background-color: #f5f5f5;
  }
 
