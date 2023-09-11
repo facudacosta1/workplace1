@@ -10,6 +10,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+ 
 </head>
 
 <body id="body-product-info">
@@ -44,6 +45,13 @@
     <div class="container" id="coments-container">
        <!--COMENTARIOS-->
     </div>
+    <div class="container" id="newcomment">
+        <input type="text" id="comentarioInput" placeholder="Escribe un comentario y deja tu calificacion">
+        <input type="range" id="calificacion" min="0" max="5" step="1">
+        <div id="starsContainer"></div>
+        <button type="button" id="enviarBtn">Enviar</button>
+    </div>
+    
   </main>
   <footer class="text-muted">
     <div class="container">
