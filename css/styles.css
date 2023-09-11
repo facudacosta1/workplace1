@@ -244,6 +244,7 @@ a.custom-card:hover {
   background-color:rgba(0, 0, 0, 0);
 }
 
+/* Estilo de boton "¡Y mucho más!" */
 .btn.btn-light.btn-lg.btn-block {
   background-color: #fff;
   color: black;
@@ -252,6 +253,18 @@ a.custom-card:hover {
   margin: 0 auto;
   width: 200px;
 }
+
+/* Estilo de boton "¡Y mucho más!" al pasar el mouse por encima */
+.btn.btn-light.btn-lg.btn-block:hover {
+  background-color: #fff;
+  color: black;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.274) 1px 1px 2px;
+  margin: 0 auto;
+  width: 200px;
+  transform: scale(1.03);
+}
+
 /* Aquí comienzan los estilos de product-info.html */
 
 /* Estilo para el contenedor principal de la información del producto */
