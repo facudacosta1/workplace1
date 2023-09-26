@@ -54,3 +54,11 @@ document.addEventListener("DOMContentLoaded", function(){
   let nameUser = document.getElementById('nameUser');
   nameUser.innerText = "Usuario: " + storedUser;
   })
+  let storedUsuario = localStorage.getItem("user");
+  let storedContraseña = localStorage.getItem("password");
+  let nameUsuario = document.getElementById("nameUsuario");
+  nameUsuario.innerText = `${storedUsuario}`;
+  function cerrarSesion(){
+    localStorage.removeItem("user");
+    localStorage.removeItem("password");
+  }

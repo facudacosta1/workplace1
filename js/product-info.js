@@ -5,6 +5,7 @@ const productInfoContainer=document.getElementById('product-info-container');
 const comentsContainer = document.getElementById('coments-container');
 var storedUser = localStorage.getItem('user');
 let jsonData;
+const recomen = document.getElementById("recommendations")
 
 async function loadAndDisplayData(){
     const url = BASE_URL + catID + '.json';
@@ -45,8 +46,62 @@ function displayProducts(product){
         
     `
     productInfoContainer.innerHTML=content;
+    recommendations()
 
 }
+
+
+
+
+
+
+
+
+
+function setProductID(id) {
+    localStorage.setItem("productID", id);
+    window.location = "product-info.html"
+}
+
+function recommendations() {
+    const recomProducts = jsonData.products.filter(product => {
+        return product.id !== parseInt(productID);
+    });
+    displayrecommendations(recomProducts);
+}
+
+recommendations();
+
+function displayrecommendations(products) {
+    let content = '<h1>Productos Relacionados</h1>'; 
+
+    products.forEach(product => {
+        content += `
+            <div class="recommendations-products" onclick="setProductID(${product.id})">
+                <img class="recommendations-product-img" src="${product.image}">
+                <h1 class="recommendations-product-name">${product.name}</h1>
+            </div>
+        `;
+    });
+
+    recomen.innerHTML = content;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //FUNCION PARA OBTENER JSON DE COMENTARIOS
 
@@ -136,3 +191,4 @@ enviarBtn.addEventListener('click', function(e){
     enviarComentario();
     postComentario();
 });
+
