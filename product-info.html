@@ -10,10 +10,9 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-
 </head>
 
-<body id="body-product-info">
+<body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
     <div class="container">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -31,43 +30,43 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <li class="nav-item">
-            <div class="dropdown">
-              
-              <button id="nameUsuario"  class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              </button>
-             
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="cart.html">Mi Carrito</a></li>
-                <li><a class="dropdown-item" href="my-profile.html" >Mi Perfil</a></li>
-                <li><a class="dropdown-item" href="login.html" onclick="cerrarSesion()">Cerrar sesión</a></li>
-                 <li><button class="btn-night" >Modo noche </button></li>
-              </ul>
-            </div>
-          </li>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="my-profile.html" role="button" id="nameUser" data-bs-toggle="dropdown" aria-expanded="false">
+            </a>
+          
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+              <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+              <li><button class="btn-night" >Modo noche </button></li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
   </nav>
   <main>
-    <div class="container" id="product-info-container"> 
-      <!--INFO PRODUCTOS-->
-    </div> <br>
-    <div class="container" id="coments-container">
-       <!--COMENTARIOS-->
+    <main>
+      <div class="container" id="product-info-container"> 
+        <!--INFO PRODUCTOS-->
+      </div> <br>
+      <div class="container" id="coments-container">
+         <!--COMENTARIOS-->
+      </div>
+  
+      <div class="container" id="newcomment">
+        <label for="comentarioInput">Escribe un comentario:</label>
+        <input type="text" id="comentarioInput" placeholder="Escribe un comentario y deja tu calificacion">
+        <input type="range" id="calificacion" min="0" max="5" step="1">
+        <div id="starsContainer"></div>
+        <button type="button" id="enviarBtn">Enviar</button>
     </div>
+    <div class="container" id="recommendations">
+     
+    </div>
+  </main>
 
-    <div class="container" id="newcomment">
-      <label for="comentarioInput">Escribe un comentario:</label>
-      <input type="text" id="comentarioInput" placeholder="Escribe un comentario y deja tu calificacion">
-      <input type="range" id="calificacion" min="0" max="5" step="1">
-      <div id="starsContainer"></div>
-      <button type="button" id="enviarBtn">Enviar</button>
-  </div>
-</main>
-<div class="container" id="recommendations">
- 
-</div>
+
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">

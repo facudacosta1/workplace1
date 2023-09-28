@@ -1,5 +1,4 @@
 const BASE_URL = 'https://japceibal.github.io/emercado-api/cats_products/'; // base link JSON
-const catID = localStorage.getItem('catID'); //Obtiene catID del localStorage
 let jsonData; 
 
 // Función para cargar los datos JSON y mostrarlos 

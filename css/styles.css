@@ -356,14 +356,12 @@ margin-top: 5px;
 
 #recommendations{
   text-align: center;
-  margin-top: 20px;
-  margin-left: 105px;
-  display: inline-block;
   background-color: rgba(156, 70, 70, 0.055);
   box-shadow: 1px 1px 2px grey;
   border-radius: 10px;
   padding: 20px;
  }
+
 
  .recommendations-products{
  background-color: white;
@@ -393,4 +391,16 @@ margin-top: 5px;
   font-size: 1.2em;
   font-weight:bold;
   margin-top: 10px;
+}
+
+.carousel{
+  width: 50%;
+}
+
+.product-info{
+  width: 50%;
+}
+
+#containerProductsInfo{
+  display: flex;
 }
