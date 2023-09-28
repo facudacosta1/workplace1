@@ -46,62 +46,13 @@ function displayProducts(product){
         
     `
     productInfoContainer.innerHTML=content;
-    recommendations()
-
+    recommendations();
 }
-
-
-
-
-
-
-
-
 
 function setProductID(id) {
     localStorage.setItem("productID", id);
     window.location = "product-info.html"
 }
-
-function recommendations() {
-    const recomProducts = jsonData.products.filter(product => {
-        return product.id !== parseInt(productID);
-    });
-    displayrecommendations(recomProducts);
-}
-
-recommendations();
-
-function displayrecommendations(products) {
-    let content = '<h1>Productos Relacionados</h1>'; 
-
-    products.forEach(product => {
-        content += `
-            <div class="recommendations-products" onclick="setProductID(${product.id})">
-                <img class="recommendations-product-img" src="${product.image}">
-                <h1 class="recommendations-product-name">${product.name}</h1>
-            </div>
-        `;
-    });
-
-    recomen.innerHTML = content;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //FUNCION PARA OBTENER JSON DE COMENTARIOS
 
@@ -119,6 +70,7 @@ async function getComments(){
     }
 }
 getComments();
+
 
 //FUNCION PARA MOSTRAR COMENTARIOS
 
@@ -192,3 +144,28 @@ enviarBtn.addEventListener('click', function(e){
     postComentario();
 });
 
+//FUNCIONES PARA OBTENER PRODUCTOS RELACIONADOS
+
+function recommendations() {
+    const recomProducts = jsonData.products.filter(product => {
+        return product.id !== parseInt(productID);
+    });
+    displayrecommendations(recomProducts);
+}
+
+recommendations();
+
+function displayrecommendations(products) {
+    let content = '<h1>Productos Relacionados</h1>'; 
+
+    products.forEach(product => {
+        content += `
+            <div class="recommendations-products" onclick="setProductID(${product.id})">
+                <img class="recommendations-product-img" src="${product.image}">
+                <h2 class="recommendations-product-name">${product.name}</h2>
+            </div>
+        `;
+    });
+
+    recomen.innerHTML = content;
+}
