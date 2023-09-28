@@ -431,3 +431,24 @@ h1 {
     padding: 10px;
   }
 }
+
+#nameUser{
+  background-color:rgba(9, 9, 9, 0);
+  border: none;
+  width: 109%;
+
+}
+
+.dropdown-menu{
+  background-color: black;
+  align-items: center;
+}
+
+.dropdown-item{
+  color: white;
+  text-align: center;
+}
+
+.btn-night{
+  border: none; 
+}
