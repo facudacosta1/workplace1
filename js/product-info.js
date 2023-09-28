@@ -15,7 +15,6 @@ async function getShowData(){
         jsonData= await response.json();
         showProductInfo();
         showRelatedProducts();
-        console.log(jsonData.relatedProducts);
 
     } catch (error) {
         console.error('Error:', error)
@@ -96,8 +95,6 @@ getComments();
 
 function showComments() {
     const comentsContainer = document.getElementById('coments-container');
-    const titulo = `<h1>Comentarios:</h1>`;
-    comentsContainer.innerHTML = titulo;
     let content = '';
 
     comentsData.forEach(coment => {

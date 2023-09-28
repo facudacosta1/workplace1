@@ -348,12 +348,6 @@ h1 {
 
 /* Estilo para la seccion de recomendaciones */
 
-#recommendations h1 {
-font-size: 1.5em;
-font-weight: bold;
-margin-top: 5px;
-}
-
 #recommendations{
   text-align: center;
   background-color: rgba(156, 70, 70, 0.055);
@@ -403,4 +397,37 @@ margin-top: 5px;
 
 #containerProductsInfo{
   display: flex;
+}
+
+.titles{
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+/* Estilo para pantallas móviles */
+@media (max-width: 767px) {
+  /* Cambiamos la dirección del contenedor principal a columna */
+  #containerProductsInfo {
+    flex-direction: column;
+  }
+
+  /* Estilo para el carrusel */
+  #carouselExampleCaptions {
+    /* Ajustamos el ancho del carrusel al 100% del contenedor principal */
+    width: 100%;
+  }
+
+  /* Estilo para la información del producto */
+  .product-info {
+    /* Alineamos el contenido al centro */
+    text-align: center;
+    /* Ajustamos el ancho al 100% del contenedor principal */
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    text-align: left;
+    margin: 0;
+    padding: 10px;
+  }
 }
