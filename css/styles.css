@@ -189,9 +189,7 @@ a.custom-card:hover {
   color: orange;
 }
 
-.products-body{
-  background-image: url('/img/fondo-login.PNG');
-}
+
 
 .product-img{
   max-width: 30%;
@@ -294,9 +292,6 @@ a.custom-card:hover {
  }
 
  /* Estilo para el fondo de la página */
-#body-product-info{
-  background-image: url('/img/fondo-login.PNG');
-}
 
 /* Estilo para el nombre del producto */
 .product-name{
@@ -316,7 +311,6 @@ a.custom-card:hover {
   border-radius: 10px;
   margin-top: 10px;
   padding: 20px; ;
-  background-color: rgba(156, 70, 70, 0.055);
   box-shadow: 1px 1px 2px grey;
 }
 
@@ -439,16 +433,7 @@ h1 {
 
 }
 
-.dropdown-menu{
-  background-color: black;
-  align-items: center;
-}
-
-.dropdown-item{
-  color: white;
+.dropdown-menu li{
   text-align: center;
 }
 
-.btn-night{
-  border: none; 
-}

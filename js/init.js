@@ -65,3 +65,22 @@ document.addEventListener("DOMContentLoaded", function(){
     localStorage.removeItem("user");
     localStorage.removeItem("password");
   }
+
+  const temaOscuro = () => {
+    document.querySelector("html").setAttribute("data-bs-theme", "dark");
+    document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill");
+  }
+
+  const temaClaro = () => {
+    document.querySelector("html").setAttribute("data-bs-theme", "light");
+    document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill");
+  }
+
+  const cambiarTema = () => {
+    const temaActual = document.querySelector("html").getAttribute("data-bs-theme");
+    if (temaActual === "light") {
+      temaOscuro();
+    } else {
+      temaClaro();
+    }
+  }
