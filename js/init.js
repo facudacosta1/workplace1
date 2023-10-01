@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function(){
   function cerrarSesion(){
     localStorage.removeItem("user");
     localStorage.removeItem("password");
-    localStorage.removeItem("theme")
+    localStorage.removeItem("theme-dark")
   }
 
   const temaOscuro = () => {
