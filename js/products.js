@@ -35,9 +35,11 @@ function displayProducts(products) {
     let content = '';
     products.forEach(product => {
         content += `
-            <div class="product" onclick="setProductID(${product.id})">
-                <img class="product-img" src="${product.image}" alt="${product.name}">
-                <div class="product-details">
+            <div class="container product" onclick="setProductID(${product.id})">
+                <div class="img-product-div">
+                    <img class="product-img" src="${product.image}" alt="${product.name}">
+                </div>
+                <div class="container product-details">
                     <h2 class="product-name">${product.name}</h2>
                     <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
                     <p class="product-description">${product.description}</p>
@@ -76,8 +78,8 @@ searchInput.addEventListener('input', function () {
 
 const rangeFilterCountMin = document.getElementById('rangeFilterCountMin');
 const rangeFilterCountMax = document.getElementById('rangeFilterCountMax');
-const filterBtn = document.getElementById('filterBtn');
-const clearBtn = document.getElementById('clearBtn');
+const filterBtn = document.getElementById('btnFiltrar');
+const clearBtn = document.getElementById('btnLimpiar');
 
     //Evento tipo "click" para el botón "filtrar"
 filterBtn.addEventListener('click', function () {

@@ -32,17 +32,19 @@
           <li class="nav-item">
             <a class="nav-link" href="sell.html">Vender</a>
           </li>
-          <div class="dropdown">
-            <a class="btn btn-secondary dropdown-toggle" href="my-profile.html" role="button" id="nameUser" data-bs-toggle="dropdown" aria-expanded="false">
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
-              <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
-              <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
-              <li><button class="btn rounded-fill" onclick="cambiarTema()"><i class="bi bi-moon-fill" id="dl-icon"></i>
-              </button></li>
-            </ul>
-          </div>
+          <li class="nav-item">
+            <div class="dropdown nav-link">
+              <a class="btn dropdown-toggle" href="my-profile.html" role="button" id="nameUser" data-bs-toggle="dropdown" aria-expanded="false">
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="cart.html">Mi carrito</a></li>
+                <li><a class="dropdown-item" href="my-profile.html">Mi perfil</a></li>
+                <li><a class="dropdown-item" href="login.html">Cerrar sesión</a></li>
+                <li><button class="btn rounded-fill" onclick="cambiarTema()"><i class="bi bi-moon-fill" id="dl-icon"></i>
+                </button></li>
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -51,7 +53,7 @@
   <main class="pb-5 container">
 
     <!--Se agrega h1 y p para cada categoría-->
-    <div class="text-center p-4"> 
+    <div class="text-center buscador-container"> 
       <h2> <b>Productos</b></h2> 
       <p class="lead" id="categoryName"> Aquí verás todos los productos de la categoria</p>
       
@@ -69,39 +71,33 @@
     <div class="col text-end">
       <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
         <input type="radio" class="btn-check" name="options" id="sortAsc">
-        <label class="btn btn-light" for="sortAsc">A-Z</label>
+        <label class="btn" for="sortAsc">A-Z</label>
         <input type="radio" class="btn-check" name="options" id="sortDesc">
-        <label class="btn btn-light" for="sortDesc">Z-A</label>
+        <label class="btn" for="sortDesc">Z-A</label>
         <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
-        <label class="btn btn-light" for="sortByCount"><i class="fas fa-sort-amount-down mr-1" id="sortByCount-i"></i></label>
+        <label class="btn" for="sortByCount"><i class="fas fa-sort-amount-down mr-1" id="sortByCount-i"></i></label>
         <input type="radio" class="btn-check" name="options" id="sortByPrice" checked>
-        <label class="btn btn-light" for="sortByPrice">$<i class="fas fa-sort-amount-down mr-1" id="sortByPrice-i"></i></label>
+        <label class="btn" for="sortByPrice">$<i class="fas fa-sort-amount-down mr-1" id="sortByPrice-i"></i></label>
         
       </div>
     </div>
 
-    <!--Se agrega input para filtro rango de precios-->
-    <div class="row">
-      <div class="col-lg-6 offset-lg-6 col-md-12 mb-1 container">
-        <div class="row container p-0 m-0">
-          <div class="col">
-            <p class="font-weight-normal text-end my-2">Cant.</p>
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" min="0" placeholder="min." id="rangeFilterCountMin">
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" min="0" placeholder="máx." id="rangeFilterCountMax">
-          </div>
-          <div class="col-3 p-0">
-            <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="filterBtn" >Filtrar</button>
-              <button  id="clearBtn">Limpiar</button>
-            </div>
-          </div>
-        </div>
-      </div> 
-
+    <div class="container" id="filtros-container">
+      <div class="col-5 filtros">
+        <p class="font-weight-normal text-end my-2">Cant.</p>
+      </div>
+      <div class="col-2 filtros">
+        <input class="form-control" type="number" min="0" placeholder="min." id="rangeFilterCountMin">
+      </div>
+      <div class="col-2 filtros">
+        <input class="form-control" type="number" min="0" placeholder="máx." id="rangeFilterCountMax">
+      </div>
+      <div class="col-2 btn-group filtros" role="group">
+          <button class="btn btn-filtros" id="btnFiltrar" >Filtrar</button>
+          <button class="btn btn-filtros"  id="btnLimpiar">Limpiar</button>
+      </div>
+    </div>
+    
     <!--CONTENEDOR PARA MOSTRAR PRODUCTOS-->
     <div id="productContainer" class="container"> 
 

@@ -192,11 +192,12 @@ a.custom-card:hover {
 
 
 .product-img{
-  max-width: 30%;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  border-radius: 5px;
+  max-width: 100%;
   transition: 300ms;
+}
+
+.img-product-div{
+  width: 50%;
 }
 
 .product-img:hover{
@@ -205,12 +206,10 @@ a.custom-card:hover {
 
 .product{
   display: flex;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  padding: 20px;
-  background-color: white;
   border-radius: 5px;
-  transition: 300ms;
+  padding: 2em;
+  margin: 1em;
+  transition: 200ms;
   box-shadow: 1px 1px 2px grey;
 }
 
@@ -220,15 +219,14 @@ a.custom-card:hover {
 }
 
 .product-details{
-  margin: 30px;
+  width: 50%;
+  text-align: left;
 }
 
 #search-input{
-  width: 500px;
   border-radius: 5px;
-  background-color: white;
-  border: none;
-  padding: 8px;
+  width: 100%;
+  border: 0.0000001em solid rgb(176, 168, 168);
 }
 
 #btnSearch{
@@ -237,37 +235,15 @@ a.custom-card:hover {
   border-radius: 5px;
 }
 
-#clearBtn, #filterBtn{
-  border: none;
-  background-color:rgba(0, 0, 0, 0);
-}
 
-/* Estilo de boton "¡Y mucho más!" */
-.btn.btn-light.btn-lg.btn-block {
-  background-color: #fff;
-  color: black;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.274) 1px 1px 2px;
-  margin: 0 auto;
-  width: 200px;
-}
+
 
 /* Estilo de boton "¡Y mucho más!" al pasar el mouse por encima */
-.btn.btn-light.btn-lg.btn-block:hover {
-  background-color: #fff;
-  color: black;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.274) 1px 1px 2px;
-  margin: 0 auto;
-  width: 200px;
-  transform: scale(1.03);
-}
 
 /* Aquí comienzan los estilos de product-info.html */
 
 /* Estilo para el contenedor principal de la información del producto */
 #product-info-container{
-  background-color: #EBEBEB;
   display: flex;
   margin-top: 50px;
   padding: 50px;
@@ -288,7 +264,6 @@ a.custom-card:hover {
   border-left: 5px solid #000;
   border-top-right-radius: 10px; 
   border-bottom-right-radius: 10px; 
-  background-color: #b8c0c9;
  }
 
  /* Estilo para el fondo de la página */
@@ -317,7 +292,6 @@ a.custom-card:hover {
   margin-top: 10px;
   padding: 20px; ;
   box-shadow: 1px 1px 2px grey;
-  background-color: #EBEBEB;
 }
 
 #comentarioInput{
@@ -341,7 +315,6 @@ h1 {
 }
 
 #enviarBtn{
-  background-color: white;
   border-style:solid;
   border-radius: 10px;
 }
@@ -350,7 +323,6 @@ h1 {
 
 #recommendations{
   text-align: center;
-  background-color: #EBEBEB;
   box-shadow: 1px 1px 2px grey;
   border-radius: 10px;
   padding: 20px;
@@ -358,7 +330,6 @@ h1 {
 
 
  .recommendations-products{
- background-color: white;
  box-shadow: 1px 1px 2px grey;
  display: inline-block;
  border: rgb(0, 0, 0, 0.137) 1px solid;
@@ -434,12 +405,51 @@ h1 {
 
 #nameUser{
   background-color:rgba(9, 9, 9, 0);
+  color: white;
   border: none;
-  width: 109%;
-
+  padding: 0;
 }
 
-.dropdown-menu li{
+.dropdown-menu ul, .dropdown-menu li, .dropdown-menu{
   text-align: center;
+}
+
+
+.category-description{
+  text-align: left;
+  margin-top: 0.5em;
+}
+
+#divMuchoMas{
+  justify-content: center;
+}
+
+#btnMuchoMas{
+  width: 20%;
+  box-shadow: rgba(0, 0, 0, 0.274) 1px 1px 2px;
+  border-radius: 5px;
+}
+
+
+#productContainer{
+  margin: 0;
+  padding: 0;
+}
+
+#filtros-container{
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buscador-container{
+  margin: 50px 0px 20px 0px;
+}
+
+#btnLimpiar, #btnFiltrar{
+  text-align: right;
+  width: 10px;
 }
 

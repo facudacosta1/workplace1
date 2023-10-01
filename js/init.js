@@ -61,19 +61,23 @@ document.addEventListener("DOMContentLoaded", function(){
   let storedUsuario = localStorage.getItem("user");
   let storedContraseña = localStorage.getItem("password");
   let nameUsuario = document.getElementById("nameUsuario");
+
   function cerrarSesion(){
     localStorage.removeItem("user");
     localStorage.removeItem("password");
+    localStorage.removeItem("theme")
   }
 
   const temaOscuro = () => {
     document.querySelector("html").setAttribute("data-bs-theme", "dark");
     document.querySelector("#dl-icon").setAttribute("class", "bi bi-sun-fill");
+    localStorage.setItem("theme-dark", true);
   }
 
   const temaClaro = () => {
     document.querySelector("html").setAttribute("data-bs-theme", "light");
     document.querySelector("#dl-icon").setAttribute("class", "bi bi-moon-fill");
+    localStorage.setItem("theme-dark", false);
   }
 
   const cambiarTema = () => {
@@ -83,4 +87,8 @@ document.addEventListener("DOMContentLoaded", function(){
     } else {
       temaClaro();
     }
+  }
+
+  if(localStorage.getItem("theme-dark") ==="true"){
+    temaOscuro();
   }
