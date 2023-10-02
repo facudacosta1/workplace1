@@ -453,3 +453,11 @@ h1 {
   width: 10px;
 }
 
+#itemsCarritoContainer{
+  display: flex;
+  border: solid black;
+}
+
+.cart-titles{
+  display: flex;
+}
