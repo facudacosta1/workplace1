@@ -53,18 +53,29 @@
 
   <main>
 
-    <div class="container cart-titles">
-      <p class="col-1"></p>
-      <p class="col-2">Nombre</p>
-      <p class="col-2">Costo</p>
-      <p class="col-2">Cantidad</p>
-      <p class="col-2">Subtotal</p>
+    <div class="container">
+      <div class="row">        
+          <!-- Carrito -->
+          <aside class="col">
+              <h2>Carrito</h2>
+              <!-- Elementos del carrito -->
+
+              <ul id="carrito" class="list-group">
+                <li>Producto1</li>
+                <li>Producto2</li>
+                <li>Producto3</li>
+              </ul>
+
+              
+              <hr>
+              <!-- Precio total -->
+              <p class="text-right">Total: <span id="total"></span>&dollar;</p>
+              <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+          </aside>
+      </div>
       
-    </div>
-    <div class="container" id="itemsCarritoContainer">
-
-
-    </div>
+  </div>
+  
 
 
 
