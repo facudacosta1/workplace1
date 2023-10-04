@@ -461,3 +461,12 @@ h1 {
 .cart-titles{
   display: flex;
 }
+
+#inputCantidad{
+  width: 2em;
+  text-align: center;
+}
+
+.img-carrito{
+  max-width: 3em;
+}

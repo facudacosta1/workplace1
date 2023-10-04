@@ -47,6 +47,7 @@ function showProductInfo(){
             <p>${jsonData.description}</p>
             <p>Categoría: ${jsonData.category}</p>
             <p>${jsonData.soldCount} artículos vendidos</p>
+            
         </div>
   </div>
 
