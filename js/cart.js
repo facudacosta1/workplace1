@@ -22,14 +22,13 @@ function showCarrito(articles) {
     let tableBody = document.querySelector('#tableBody');
     let content = '';
     articles.forEach((product, index) => {
-        let costo = product.unitCost;
-
+        productUnitCost = product.unitCost.toFixed(2);
+        productCurrency = product.currency;
         content += `
-
             <tr>
                 <th scope="row" class="text-center"><img src="${product.image}" alt="imagen del" class="img-carrito"></th> 
                 <td class="text-center">${product.name}</td>         
-                <td class="text-center">${product.unitCost}</td>
+                <td class="text-center">${product.currency}${productUnitCost}</td>
                 <td class="text-center">
                     <input type="number" min="1" value="1" id="inputCantidad" oninput="actualizarSubtotal()">
                 </td>
@@ -50,11 +49,13 @@ function actualizarSubtotal() {
 
     cantidadInputs.forEach((input, index) => {
         let cantidad = parseInt(input.value) || 1; 
-        let costo = parseFloat(input.closest('tr').querySelector('.text-center:nth-child(3)').textContent);
-        let subtotal = cantidad * costo;
+        let costo = parseFloat(productUnitCost);
+        let sub = cantidad * costo;
+        let subtotal = sub.toFixed(2);
+        let subtotalResult = productCurrency + subtotal;
 
         // Actualizar el contenido del elemento td con id "productSubtotal"
-        subtotalElements[index].textContent = subtotal.toFixed(2); // Puedes ajustar el formato como desees
+        subtotalElements[index].textContent = subtotalResult; // Puedes ajustar el formato como desees
     });
 }
 
