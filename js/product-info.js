@@ -20,7 +20,40 @@ async function getShowData(){
         console.error('Error:', error)
     }
 }
+
+
+
+
+function agregar(object) {
+    
+    var jsonString = localStorage.getItem("jsonArt");
+    var jsonArt = JSON.parse(jsonString);
+
+    var nuevoArticulo = {
+        id: object.id,
+        name: object.name,
+        count : 1 ,
+        image : object.images[0],
+        unitCost: object.cost,
+        currency: "USD"
+    };
+
+    
+    jsonArt.articles.push(nuevoArticulo);
+
+    var jsonStringActualizado = JSON.stringify(jsonArt);
+    localStorage.setItem("jsonArt", jsonStringActualizado);
+
+
+    //para ver si se esta agregando el articulo
+    console.log(jsonArt);
+}
+
+
+
+
 getShowData();
+
 
 function showProductInfo(){
     const productInfoContainer = document.getElementById('product-info-container');
@@ -47,7 +80,7 @@ function showProductInfo(){
             <p>${jsonData.description}</p>
             <p>Categoría: ${jsonData.category}</p>
             <p>${jsonData.soldCount} artículos vendidos</p>
-            
+            <button type="submit" class="btn btn-success" onclick="agregar(jsonData)" >Comprar</button>
         </div>
   </div>
 
@@ -56,6 +89,8 @@ function showProductInfo(){
     productInfoContainer.innerHTML = content;
 
 }
+
+
 function setProductID(id) {
     localStorage.setItem("productID", id);
     window.location = "product-info.html"

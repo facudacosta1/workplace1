@@ -44,6 +44,7 @@ function displayProducts(products) {
                     <small class="text-muted">` + product.soldCount + ` artículos vendidos</small>
                     <p class="product-description">${product.description}</p>
                     <p class="product-cost">Precio: ${product.cost}</p>
+                    <button type="submit" class="btn btn-warning" onclick="">Ingresar al Articulo</button>
                 </div>
             </div>
         `;
