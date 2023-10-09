@@ -14,8 +14,8 @@ async function getCarrito() {
             localStorage.setItem("jsonArt", jsonString);
         }
         
-        const m = JSON.parse(localStorage.getItem("jsonArt"));
-        showCarrito(m.articles);
+        const art = JSON.parse(localStorage.getItem("jsonArt"));
+        showCarrito(art.articles);
         actualizarSubtotal(); // Llama a esta función para mostrar los subtotales al cargar la página
     } catch (error) {
         console.error('Error:', error)
@@ -41,7 +41,7 @@ function showCarrito(articles) {
         <input type="number" min="1" value="1" id="inputCantidad" oninput="actualizarSubtotal()">
         </td>
         <td class="text-center" id="productSubtotal">0.0</td> <!-- Se muestra un valor predeterminado de 0.0 -->
-        <td class="text-center"><button id="boton-vaciar-art" class="btn btn-danger" onclick="borrarArt()">x</button>
+        <td class="text-center"><button id="boton-vaciar-art" class="btn btn-danger" onclick="eliminarArticulo('${product.name}')">x</button>
         </td>         
         
         </tr>
@@ -68,10 +68,26 @@ function actualizarSubtotal() {
 }
 
 function borrar() {
-    localStorage.setItem("jsonArt", "" )
-    location.reload()
+    localStorage.removeItem("jsonArt"); // Elimina la información del carrito del almacenamiento local
+    location.reload();
 }
 document.getElementById("boton-vaciar").addEventListener("click",borrar)
+
+function eliminarArticulo(identificador) {
+    let art = JSON.parse(localStorage.getItem("jsonArt"));
+    
+    // Encuentra el índice del artículo que coincide con el identificador único
+    const index = art.articles.findIndex(article => article.name === identificador);
+    
+    // Si se encontró un artículo con el identificador, elimínalo del array
+    if (index !== -1) {
+        art.articles.splice(index, 1);
+        localStorage.setItem("jsonArt", JSON.stringify(art));
+        
+        // Vuelve a cargar la página para reflejar los cambios
+        location.reload();
+    }
+}
 
 
     
