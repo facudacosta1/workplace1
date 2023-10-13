@@ -30,15 +30,15 @@ function showCarrito(articles) {
     let tableBody = document.querySelector('#tableBody');
     let content = '';
     articles.forEach((product, index) => {
-        productUnitCost = product.unitCost.toFixed(2);
-        productCurrency = product.currency;
+        const productUnitCost = product.unitCost.toFixed(2);
+        const productCurrency = product.currency;
         content += `
-        <tr>
+        <tr data-productUnitCost="${productUnitCost}" data-productCurrency="${productCurrency}">
         <th scope="row" class="text-center"><img src="${product.image}" alt="imagen del" class="img-carrito"></th> 
         <td class="text-center">${product.name}</td>         
         <td class="text-center">${product.currency}${productUnitCost}</td>
         <td class="text-center">
-        <input type="number" min="1" value="1" id="inputCantidad" oninput="actualizarSubtotal()">
+        <input type="number" min="1" value="1" id="inputCantidad" oninput="actualizarSubtotal(this)">
         </td>
         <td class="text-center" id="productSubtotal">0.0</td> <!-- Se muestra un valor predeterminado de 0.0 -->
         <td class="text-center"><button id="boton-vaciar-art" class="btn btn-danger" onclick="eliminarArticulo('${product.name}')">x</button>
@@ -51,12 +51,21 @@ function showCarrito(articles) {
     tableBody.innerHTML = content;
 }
 
+/* En este código, hemos utilizado los atributos data-productUnitCost y data-productCurrency para almacenar los valores productUnitCost y productCurrency directamente en cada fila de la tabla 
+*/
+
 function actualizarSubtotal() {
     let cantidadInputs = document.querySelectorAll('#inputCantidad');
     let subtotalElements = document.querySelectorAll('#productSubtotal');
     
     cantidadInputs.forEach((input, index) => {
         let cantidad = parseInt(input.value) || 1; 
+
+        let fila = input.closest('tr'); // Obtener la fila actual
+        let productUnitCost = parseFloat(fila.getAttribute('data-productUnitCost'));
+        let productCurrency = fila.getAttribute('data-productCurrency');
+
+
         let costo = parseFloat(productUnitCost);
         let sub = cantidad * costo;
         let subtotal = sub.toFixed(2);
@@ -66,6 +75,9 @@ function actualizarSubtotal() {
         subtotalElements[index].textContent = subtotalResult; // Puedes ajustar el formato como desees
     });
 }
+
+/*De esta manera, cada fila tiene sus propios valores productUnitCost y productCurrency asociados, y evitas la sobreescritura de variables en el bucle forEach. */
+
 
 function borrar() {
     localStorage.removeItem("jsonArt"); // Elimina la información del carrito del almacenamiento local
