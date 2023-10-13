@@ -39,7 +39,7 @@ function showCarrito(articles) {
         <td class="text-center">${product.name}</td>         
         <td class="text-center">${product.currency}${productUnitCost}</td>
         <td class="text-center">
-        <input type="number" min="1" value="1" id="inputCantidad" oninput="actualizarSubtotal(${id},this.value)">
+        <input type="number" min="1" value="${product.count}" id="inputCantidad" oninput="actualizarSubtotal(${id},this.value)">
         </td>
         <td class="text-center" id="productSubtotal">0.0</td> <!-- Se muestra un valor predeterminado de 0.0 -->
         <td class="text-center"><button id="boton-vaciar-art" class="btn btn-danger" onclick="eliminarArticulo('${product.name}')">x</button>
@@ -60,7 +60,7 @@ function actualizarCantidadProducto(id,value) {
     if(datos != null){
         datos.articles.filter(function (articulo) {
             if(articulo.id == id){
-                articulo.count = parseInt(value);
+                articulo.count = parseInt(value) || 1;
             }
         });
         localStorage.setItem("jsonArt", JSON.stringify(datos));

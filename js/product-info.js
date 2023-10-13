@@ -25,26 +25,38 @@ async function getShowData(){
 
 
 function agregar(object) {
-    
     var jsonString = localStorage.getItem("jsonArt");
     var jsonArt = JSON.parse(jsonString);
+    let encontró = false;
+    if(jsonArt != null){
+        jsonArt.articles.forEach(art => {
+            if(art.id == object.id){
+                encontró = true;
+                art.count += 1;
+                var jsonStringActualizado = JSON.stringify(jsonArt);
+                localStorage.setItem("jsonArt", jsonStringActualizado);
+                return;
+            }
+        }
+      )};
 
-    var nuevoArticulo = {
-        id: object.id,
-        name: object.name,
-        count : 1 ,
-        image : object.images[0],
-        unitCost: object.cost,
-        currency: "USD"
-    };
+    if(!encontró){
+        var nuevoArticulo = {
+            id: object.id,
+            name: object.name,
+            count : 1 ,
+            image : object.images[0],
+            unitCost: object.cost,
+            currency: "USD"
+        };
 
-    
-    jsonArt.articles.push(nuevoArticulo);
+        
+        jsonArt.articles.push(nuevoArticulo);
 
-    var jsonStringActualizado = JSON.stringify(jsonArt);
-    localStorage.setItem("jsonArt", jsonStringActualizado);
+        var jsonStringActualizado = JSON.stringify(jsonArt);
+        localStorage.setItem("jsonArt", jsonStringActualizado);
 
-
+    }
     //para ver si se esta agregando el articulo
     console.log(jsonArt);
 }
