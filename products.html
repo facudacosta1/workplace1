@@ -51,25 +51,17 @@
   </nav>
 
   <main class="pb-5 container">
-
-    <!--Se agrega h1 y p para cada categoría-->
-    <div class="text-center buscador-container"> 
+    <div class="container text-center">
       <h2> <b>Productos</b></h2> 
       <p class="lead" id="categoryName"> Aquí verás todos los productos de la categoria</p>
-      
-    <!--Se agrega caja para BUSCADOR en tiempo real-->
-    
-      <div id="search-container">
-        <form id="search-form" >
-          <input type="search" name="" id="search-input" name="query" placeholder="Buscar productos, marcas y más...">
-        </form>
-      </div>
-    
+      <form id="search-form" >
+        <input type="search" name="" id="search-input" name="query" placeholder="Buscar productos, marcas y más...">
+      </form>
     </div>
+
     
-    <!--Se agrega inputs de orden: alfabetico, articulos vendidos, precio -->
-    <div class="col text-end">
-      <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+    <div class="container col text-end">
+      <div class="btn-group btn-group-toggle m-0" data-bs-toggle="buttons">
         <input type="radio" class="btn-check" name="options" id="sortAsc">
         <label class="btn" for="sortAsc">A-Z</label>
         <input type="radio" class="btn-check" name="options" id="sortDesc">
@@ -77,26 +69,40 @@
         <input type="radio" class="btn-check" name="options" id="sortByCount" checked>
         <label class="btn" for="sortByCount"><i class="fas fa-sort-amount-down mr-1" id="sortByCount-i"></i></label>
         <input type="radio" class="btn-check" name="options" id="sortByPrice" checked>
-        <label class="btn" for="sortByPrice">$<i class="fas fa-sort-amount-down mr-1" id="sortByPrice-i"></i></label>
-        
+        <label class="btn" for="sortByPrice">$<i class="fas fa-sort-amount-down mr-1" id="sortByPrice-i"></i></label>        
       </div>
+
+
+    <div class="container">
+      <div class="row">
+        <p class="font-weight-normal my-2 col-4 text-end">Cant.</p>
+        <input class="col-2 m-0 p-0" type="number" min="0" placeholder="min." id="rangeFilterCountMin">
+        <input class="col-2 m-0 p-0" type="number" min="0" placeholder="máx." id="rangeFilterCountMax">
+        <button class="btn col-2" id="btnFiltrar" >Filtrar</button>
+        <button class="btn col-2"  id="btnLimpiar">Limpiar</button>
+      </div>
+      
     </div>
 
-    <div class="container" id="filtros-container">
-      <div class="col-5 filtros">
-        <p class="font-weight-normal text-end my-2">Cant.</p>
+    <!--
+      <div class="container" id="filtros-container">
+        
+        <div class="col-5 filtros">
+          <p class="font-weight-normal text-end my-2">Cant.</p>
+        </div>
+        <div class="col-2 filtros">
+          <input class="form-control" type="number" min="0" placeholder="min." id="rangeFilterCountMin">
+        </div>
+        <div class="col-2 filtros">
+          <input class="form-control" type="number" min="0" placeholder="máx." id="rangeFilterCountMax">
+        </div>
+        <div class="col-2 btn-group filtros d-none d-lg-flex" role="group">
+            <button class="btn btn-filtros" id="btnFiltrar" >Filtrar</button>
+            <button class="btn btn-filtros"  id="btnLimpiar">Limpiar</button>
+        </div>
       </div>
-      <div class="col-2 filtros">
-        <input class="form-control" type="number" min="0" placeholder="min." id="rangeFilterCountMin">
-      </div>
-      <div class="col-2 filtros">
-        <input class="form-control" type="number" min="0" placeholder="máx." id="rangeFilterCountMax">
-      </div>
-      <div class="col-2 btn-group filtros" role="group">
-          <button class="btn btn-filtros" id="btnFiltrar" >Filtrar</button>
-          <button class="btn btn-filtros"  id="btnLimpiar">Limpiar</button>
-      </div>
-    </div>
+
+    -->
 
     <!--CONTENEDOR PARA MOSTRAR PRODUCTOS-->
     <div id="productContainer" class="container"> 

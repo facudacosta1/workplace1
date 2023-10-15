@@ -448,11 +448,6 @@ h1 {
   margin: 50px 0px 20px 0px;
 }
 
-#btnLimpiar, #btnFiltrar{
-  text-align: right;
-  width: 10px;
-}
-
 #itemsCarritoContainer{
   display: flex;
   border: solid black;

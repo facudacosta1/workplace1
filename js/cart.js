@@ -39,10 +39,12 @@ function showCarrito(articles) {
         <td class="text-center">${product.name}</td>         
         <td class="text-center">${product.currency}${productUnitCost}</td>
         <td class="text-center">
-        <input type="number" min="1" value="${product.count}" id="inputCantidad" oninput="actualizarSubtotal(${id},this.value)">
+            <input type="number" min="1" value="${product.count}" id="inputCantidad" oninput="actualizarSubtotal(${id},this.value)">
         </td>
-        <td class="text-center" id="productSubtotal">0.0</td> <!-- Se muestra un valor predeterminado de 0.0 -->
-        <td class="text-center"><button id="boton-vaciar-art" class="btn btn-danger" onclick="eliminarArticulo('${product.name}')">x</button>
+        <td class="text-center d-none d-lg-block" id="productSubtotal">
+            0.0
+        </td> <!-- Se muestra un valor predeterminado de 0.0 -->
+        <td class="text-center d-none d-lg-block"><button id="boton-vaciar-art" class="btn btn-danger" onclick="eliminarArticulo('${product.name}')">x</button>
         </td>         
         
         </tr>
