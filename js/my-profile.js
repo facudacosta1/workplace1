@@ -42,16 +42,44 @@ if (perfilData) {
     inputApellido.value = perfil.apellido;
     inputTelefono.value = perfil.telefono;
 
-    if (perfil.foto) {
+    /*if (perfil.foto) {
         perfilImage.src = perfil.foto;
-    }
+    }*/
 }
 
-inputFoto.addEventListener('change', function () {
+/*inputFoto.addEventListener('change', function () {
     if (inputFoto.files.length > 0) {
         const selectedImage = inputFoto.files[0];
         const imageURL = URL.createObjectURL(selectedImage);
         perfilImage.src = imageURL;
     }
+});*/
+
+///para mostrar la imagen necesito que se guarde en un tipo 64 y max 5mb
+
+// Asegúrate de que este código esté en un <script> tag al final de tu body o en un archivo JS externo que esté correctamente vinculado.
+
+document.getElementById('inputFoto').addEventListener('change', function() {
+    const file = this.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        // Guardar imagen en localStorage
+        localStorage.setItem('profileImage', e.target.result);
+        // Mostrar imagen desde localStorage
+        document.getElementById('fotoPerfil').src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
 });
 
+// Al cargar la página, establecer la imagen de perfil si existe en localStorage
+window.onload = function() {
+    const savedImage = localStorage.getItem('profileImage');
+   
+    if (savedImage) {
+        document.getElementById('fotoPerfil').src = savedImage;
+    }else{
+        document.getElementById('fotoPerfil').src = "img/img_perfil.png";
+    }
+};
