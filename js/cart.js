@@ -4,16 +4,15 @@ let cartArray = cartJSON[0]
 
 let articlesContainer = document.getElementById('articlesContainer');
 
-
+//FUNCION PARA MOSTRAR TODOS LOS ARTICULOS DEL CARRITO
 function showCartArticles(cart) {
 
     cart.forEach(article => {
-
-        //PANTALLAS PEQUEÑAS -----------------------------------------------------------------------------
+        //CREACIÓN DE ELEMENTOS PARA PANTALLAS PEQUEÑAS
         const row = document.createElement('div');
         row.classList.add('row', 'd-sm-none');
 
-        // Crea la columna de imagen
+        // IMAGEN
         const colImage = document.createElement('div');
         colImage.classList.add('col-5', 'd-flex', 'p-0', 'm-0', 'align-content-center');
 
@@ -26,11 +25,11 @@ function showCartArticles(cart) {
         imgContainer.appendChild(img);
         colImage.appendChild(imgContainer);
 
-        // Crea la columna de información
+        // CONTAINER DE INFORMACIÓN
         const colInfo = document.createElement('div');
         colInfo.classList.add('col-7', 'p-2');
 
-        // Nombre del artículo
+        //NOMBRE DEL ARTICULO
         const rowName = document.createElement('div');
         rowName.classList.add('row', 'mb-1');
         const nameParagraph = document.createElement('p');
@@ -38,7 +37,7 @@ function showCartArticles(cart) {
         nameParagraph.textContent = article.name;
         rowName.appendChild(nameParagraph);
 
-        // Eliminar y Guardar
+        // BOTON ELIMINAR Y GUARDAR
         const rowActions = document.createElement('div');
         rowActions.classList.add('row', 'd-flex');
         const colDelete = document.createElement('div');
@@ -56,7 +55,7 @@ function showCartArticles(cart) {
         rowActions.appendChild(colDelete);
         rowActions.appendChild(colSave);
 
-        // Costo unidad
+        // COSTO UNIDAD
         const rowCost = document.createElement('div');
         rowCost.classList.add('row', 'mb-1');
         const costParagraph = document.createElement('p');
@@ -64,10 +63,11 @@ function showCartArticles(cart) {
         costParagraph.textContent = article.currency + '$' + article.unitCost + ' c/u';
         rowCost.appendChild(costParagraph);
 
-        // Botones de cantidad y subtotal
+        // CONTENEDOR DE CANTIDAD
         const rowQuantity = document.createElement('div');
         rowQuantity.classList.add('row');
 
+        // BOTON DE RESTAR CANTIDAD
         const btnMinus = document.createElement('button');
         btnMinus.classList.add('btn', 'col-1', 'text-center', 'p-0', 'm-0');
         btnMinus.textContent = '-';
@@ -88,6 +88,7 @@ function showCartArticles(cart) {
 
         }
 
+        //INPUT DE CANTIDAD
         const colInput = document.createElement('div');
         colInput.classList.add('col-2', 'd-flex', 'align-items-center', 'p-0', 'm-0');
         const inputQuantity = document.createElement('input');
@@ -109,6 +110,7 @@ function showCartArticles(cart) {
         inputQuantity.id = 'inputQuantity' + article.id;
         inputQuantity.classList.add('w-100', 'form-control', 'text-center', 'p-0', 'm-0');
 
+        // BOTON DE SUMAR CANTIDAD
         const btnPlus = document.createElement('button');
         btnPlus.classList.add('btn', 'col-1', 'text-center', 'p-0', 'm-0');
         btnPlus.textContent = '+';
@@ -120,11 +122,13 @@ function showCartArticles(cart) {
             actualizarSubtotales();
         }
 
+        // SUBTOTAL
         const colSubtotal = document.createElement('div');
         colSubtotal.classList.add('col-8', 'py-1', 'h4', 'm-0', 'd-flex', 'justify-content-end');
         const subtotalParagraph = document.createElement('p');
         subtotalParagraph.classList.add('m-0', 'p-0');
 
+        // Agrega las columnas a la fila
         rowQuantity.appendChild(btnMinus);
         rowQuantity.appendChild(colInput);
         colInput.appendChild(inputQuantity);
@@ -144,6 +148,7 @@ function showCartArticles(cart) {
 
         articlesContainer.appendChild(row);
 
+        //FUNCION PARA OBTENER EL SUBTOTAL DE CADA ARTICULO
         function costSubtotal() {
             let subtotal = article.unitCost * article.count;
             return subtotal;
@@ -181,7 +186,6 @@ function showCartArticles(cart) {
         container.appendChild(containerName);
 
         //precio
-
         let containerPrice = document.createElement('div');
         containerPrice.classList.add('col-2', 'col-sm-2', 'border', 'border-warning', 'py-3', 'd-sm-flex', 'justify-content-center', 'text-truncate');
         containerPrice.textContent = article.currency + '$' + article.unitCost;
@@ -235,6 +239,7 @@ function showCartArticles(cart) {
         }
         colPrueba2.appendChild(inputCount2);
 
+        //BOTON PARA SUMAR CANTIDAD
         let colPrueba3 = document.createElement('div');
         colPrueba3.classList.add('col-4', 'm-0', 'p-0');
         rowCount.appendChild(colPrueba3);
@@ -252,8 +257,7 @@ function showCartArticles(cart) {
         }
         colPrueba3.appendChild(buttonPlus2);
 
-        //subtotal
-
+        //SUBTOTAL
         let subtotal2 = document.createElement('div');
         subtotal2.classList.add('col-2', 'col-sm-3', 'border', 'border-warning', 'py-3', 'text-center');
         subtotal2.textContent = article.currency + '$' + costSubtotal();
@@ -269,25 +273,24 @@ function showCartArticles(cart) {
             localStorage.setItem('cart', JSON.stringify(cartJSON));
             window.location.reload();
         }
-
-
-
-
     });
 
 }
 
+//EVENTO AL CARGAR EL DOM
 document.addEventListener('DOMContentLoaded', function () {
     showCartArticles(cartJSON);
     actualizarSubtotales();
 })
 
+//FUNCIONES DE COSTO DE ENVIO
 let radioEnvioPremium = document.getElementById('radioEnvioPremium');
 let radioEnvioExpress = document.getElementById('radioEnvioExpress');
 let radioEnvioStandard = document.getElementById('radioEnvioStandard');
 let subtotalEnvioContainer = document.getElementById('subtotalEnvioContainer');
 let totalCompraContainer = document.getElementById('totalCompraContainer');
 
+//FUNCION DE ACTUALIZAR SUBTOTALES DE COSTO COSTO PRODUCTOS, ENVIO Y TOTAL
 function actualizarSubtotales() {
     let articles = JSON.parse(localStorage.getItem('cart'));
 
@@ -308,6 +311,7 @@ function actualizarSubtotales() {
     const totalProductsContainer = document.getElementById('totalProductsContainer');
     totalProductsContainer.textContent = 'USD$  ' + costoTotalCompra;
 
+    //EVALUA CADA RADIO Y AGREGA EL ENVIO CORRESPONDIENTE
     if (radioEnvioPremium.checked) {
         let costoEnvio = costoTotalCompra * 0.15;
         subtotalEnvioContainer.textContent = 'USD$  ' + costoEnvio.toFixed(0);
@@ -328,34 +332,13 @@ function actualizarSubtotales() {
     }
 }
 
+//FUNCION DE ACTUALIZAR SUBTOTALES DE COSTO COSTO PRODUCTOS, ENVIO Y TOTAL
 const elementosTipoEnvio = document.querySelectorAll('[name="tipoEnvio"]');
 elementosTipoEnvio.forEach(elemento => {
     elemento.addEventListener('change', (event) => {
         actualizarSubtotales();
     });
 });
-
-
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-    'use strict'
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-            if (!form.checkValidity()) {
-                event.preventDefault()
-                event.stopPropagation()
-            }
-
-            form.classList.add('was-validated')
-        }, false)
-    })
-})()
-
 
 let modalForm = document.getElementById("modalForm");
 let formCompra = document.getElementById("formCompra");
@@ -366,6 +349,7 @@ const tarjetaInputs = document.querySelectorAll("#inputNumeroTarjeta, #inputCVC,
 const transferenciaInputs = document.getElementById("inputNumeroBanco");
 
 
+// EVENTOS PARA PARA LA SELECCION DE METODO DE PAGO
 radioTarjeta.addEventListener("change", function () {
     if (radioTarjeta.checked) {
         // Si se selecciona tarjeta, habilita los campos de tarjeta y deshabilita el campo de cuenta de transferencia
@@ -378,7 +362,6 @@ radioTarjeta.addEventListener("change", function () {
     }
 });
 
-// Agrega un evento "change" al radio de transferencia
 radioTransferencia.addEventListener("change", function () {
     if (radioTransferencia.checked) {
         // Si se selecciona transferencia, habilita el campo de cuenta de transferencia y deshabilita los campos de tarjeta
@@ -391,6 +374,8 @@ radioTransferencia.addEventListener("change", function () {
     }
 });
 
+
+//EVENTO PARA EL FORMULARIO DEL MODAL
 modalForm.addEventListener('submit', (e) => {
     e.preventDefault();
     if (modalForm.checkValidity()) {
@@ -412,7 +397,7 @@ modalForm.addEventListener('submit', (e) => {
 })
 
 
-
+//EVENTO AL ENVIAR EL FORMULARIO DE COMPRA
 formCompra.addEventListener('submit', (e) => {
     e.preventDefault();
     // Restablecer el formulario
@@ -434,3 +419,19 @@ formCompra.addEventListener('submit', (e) => {
     }
 });
 
+
+// JS PARA VALIDACIÓN
+(() => {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()

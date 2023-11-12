@@ -12,6 +12,7 @@ inputEmail.value = email;
 
 const formPerfil = document.getElementById('formPerfil');
 
+// Evento para enviar los datos del perfil
 formPerfil.addEventListener('submit', function (e) {
     if (!formPerfil.checkValidity()) {
         e.preventDefault();
@@ -41,24 +42,9 @@ if (perfilData) {
     inputNombre2.value = perfil.segundoNombre;
     inputApellido.value = perfil.apellido;
     inputTelefono.value = perfil.telefono;
-
-    /*if (perfil.foto) {
-        perfilImage.src = perfil.foto;
-    }*/
 }
 
-/*inputFoto.addEventListener('change', function () {
-    if (inputFoto.files.length > 0) {
-        const selectedImage = inputFoto.files[0];
-        const imageURL = URL.createObjectURL(selectedImage);
-        perfilImage.src = imageURL;
-    }
-});*/
-
-///para mostrar la imagen necesito que se guarde en un tipo 64 y max 5mb
-
-// Asegúrate de que este código esté en un <script> tag al final de tu body o en un archivo JS externo que esté correctamente vinculado.
-
+// Evento para cambiar la imagen de perfil
 document.getElementById('inputFoto').addEventListener('change', function() {
     const file = this.files[0];
     const reader = new FileReader();

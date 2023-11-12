@@ -3,6 +3,7 @@ const btnIngresar = document.querySelector('#btnIngresar');
 const inputUser = document.querySelector('#inputUser');
 const inputPassword = document.querySelector('#inputPassword');
     
+//EVENTO AL FORMULARIO DEL LOGIN / GUARDA EL USUARIO EN LOCALSTORAGE
     formLogin.addEventListener('submit',function(e){
         e.preventDefault();
 
@@ -24,9 +25,11 @@ const inputPassword = document.querySelector('#inputPassword');
         return false;
     });
 
+    //INICIALIZA LOS COMENTARIOS
     let coments = '';
     localStorage.setItem('coments', JSON.stringify(coments));
 
+    //OBTIENE EL CARRITO POR DEFECTO Y LO GUARDA EN EL LOCALSTORAGE O PUSHEA AL MISMO
     linkCartData = 'https://japceibal.github.io/emercado-api/user_cart/';
     let user = '25801';
     async function fetchCart() {

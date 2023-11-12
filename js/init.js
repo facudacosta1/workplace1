@@ -40,7 +40,7 @@ let getJSONData = function(url){
     });
 }
 
-//Validar si está logueado
+//VALIDAR SI EL USUARIO ESTA LOGUEADO 
 document.addEventListener('DOMContentLoaded',function(){
   
   const cuenta = localStorage.getItem('cuenta');
@@ -52,19 +52,21 @@ document.addEventListener('DOMContentLoaded',function(){
 
 })
 
-//Mostrar nombre en nav
+
+//MOSTRAR EL NOMBRE EN EL NAVBAR
 function nameUserInVar(){
   let userName = JSON.parse(localStorage.getItem('cuenta'));
   const nameVarContainer = document.getElementById('userNameContainer');
   nameVarContainer.textContent = userName.usuario;
 }
 
-//Cerrar sesión
-
+//CERRAR SESIÓN
 function cerrarSesion(){
   localStorage.removeItem('cuenta');
   window.location.reload();
 }
+
+//CAMBIAR DE TEMA CLARO A OSCURO 
 function temaClaro() {
   document.querySelector("html").setAttribute("data-bs-theme", "light");
   document.querySelector("#dl-icon-dark").classList.remove("d-none");
@@ -94,6 +96,7 @@ function cambiarTema() {
   }
 }
 
+//EVALUA SI EL TEMA ES OSCURO O CLARO
 if(localStorage.getItem("theme-dark") ==="true"){
   temaOscuro();
 } 

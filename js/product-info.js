@@ -3,6 +3,7 @@ let IDproduct = localStorage.getItem('IDproduct');
 let linkProductData = 'https://japceibal.github.io/emercado-api/products/';
 let linkComentsData = 'https://japceibal.github.io/emercado-api/products_comments/';
 
+//FETCH A INFO DEL  PRODUCTO SELECCIONADO
 async function fetchProductInfo() {
     const URL = linkProductData + IDproduct + '.json';
     try {
@@ -151,6 +152,7 @@ newComentForm.addEventListener('submit', function (e) {
     window.location.reload();
 });
 
+//AGREGAR UN NUEVO COMENTARIO
 function newComent() {
     let description = document.getElementById('inputComent').value;
     let score = document.getElementById('inputScore').value;
@@ -216,6 +218,7 @@ function showRelatedProducts() {
     
 }
 
+//FUNCION AGREGAR AL CARRITO
 function addToCart(){
     let IDproduct = localStorage.getItem('IDproduct');
     console.log(IDproduct);

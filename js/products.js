@@ -92,6 +92,7 @@ function clearProductsContainer(){
     productsContainer.innerHTML = '';
 }
 
+//EVENTO PARA EL BUSCADOR EN TIEMPO REAL
 inputSearch.addEventListener('input', function(){
     let searchTerm = inputSearch.value.trim().toLowerCase();
 
@@ -189,4 +190,3 @@ function cleanFilters(){
     showProducts(category.products);
 }
 
-//-----------------------------REDIRIGIR A PRODUCT INFO----------------------------------------------------------
