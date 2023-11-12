@@ -11,11 +11,4 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
-
-    var storedUser = localStorage.getItem('user');
-    var storedPassword = localStorage.getItem('password');
-
-    if (!storedUser || !storedPassword){
-        window.location = 'login.html'
-    }
 });

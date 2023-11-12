@@ -39,3 +39,82 @@ let getJSONData = function(url){
         return result;
     });
 }
+
+//Validar si está logueado
+document.addEventListener('DOMContentLoaded',function(){
+  
+  const cuenta = localStorage.getItem('cuenta');
+  if(!cuenta){
+    window.location.href='login.html';
+  } 
+  
+  nameUserInVar();
+
+})
+
+//Mostrar nombre en nav
+function nameUserInVar(){
+  let userName = JSON.parse(localStorage.getItem('cuenta'));
+  const nameVarContainer = document.getElementById('userNameContainer');
+  nameVarContainer.textContent = userName.usuario;
+}
+
+//Cerrar sesión
+
+function cerrarSesion(){
+  localStorage.removeItem('cuenta');
+  window.location.reload();
+}
+function temaClaro() {
+  document.querySelector("html").setAttribute("data-bs-theme", "light");
+  document.querySelector("#dl-icon-dark").classList.remove("d-none");
+  document.querySelector("#dl-icon-sun").classList.add("d-none");
+  localStorage.setItem("theme-dark", false);
+  let imgCover = document.getElementById('imgCover');
+  imgCover.src = 'img/cover_back.png';
+
+}
+
+function temaOscuro() {
+  document.querySelector("html").setAttribute("data-bs-theme", "dark");
+  document.querySelector("#dl-icon-dark").classList.add("d-none");
+  document.querySelector("#dl-icon-sun").classList.remove("d-none");
+  localStorage.setItem("theme-dark", true);
+  let imgCover = document.getElementById('imgCover');
+  imgCover.src = 'img/cover-back-black.png';
+ 
+}
+
+function cambiarTema() {
+  const tema = document.querySelector("html").getAttribute("data-bs-theme");
+  if (tema === "light") {
+    temaOscuro();
+  } else {
+    temaClaro();
+  }
+}
+
+if(localStorage.getItem("theme-dark") ==="true"){
+  temaOscuro();
+} 
+
+// Ejemplo de JavaScript inicial para deshabilitar el envío de formularios si hay campos no válidos
+(function () {
+  'use strict'
+
+  // Obtener todos los formularios a los que queremos aplicar estilos de validación de Bootstrap personalizados
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Bucle sobre ellos y evitar el envío
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()

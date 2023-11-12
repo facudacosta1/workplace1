@@ -189,3 +189,7 @@ a.custom-card:hover {
   color: orange;
 }
 
+#body-login{
+  background-image: url('../img/fondo-login.PNG');
+}
+
